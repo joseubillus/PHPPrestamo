@@ -1,18 +1,12 @@
-<html>
-<head>
-<title>Bienvenido a sistema</title>
-</head>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $.ajax({
-        url: "http://localhost:8090/PHPPrestamo/Servicio/SCliente.php",
-        data: {txtbus: ''},
+        url: "Servicio/SCliente.php",
+        data: {tipo:'lista', txtbus: ''},
         type: 'Get',
         dataType: '',
         success: function(resp){
             var tabla="";
-            var JCli = JSON.parse(resp);
-            console.log(JCli);
+            var JCli = resp;
             
             for(var i=0;i<JCli.length;i++){
                 tabla+="<tr>";
@@ -29,7 +23,20 @@
         }
     });
 </script>
-<body>
-    <div id="TbLista">Lista</div>
-</body>
-</html>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Codigo</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Dni</th>
+                <th>Eli</th>
+                <th>Edit</th>
+            </tr>
+        </thead>
+        <thead>
+            <tbody id="TbLista"></tbody>
+        </thead>
+    </table>
+</div>
